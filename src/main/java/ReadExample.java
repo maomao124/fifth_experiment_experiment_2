@@ -13,6 +13,7 @@ import java.io.*;
  * Description(描述)： 无
  */
 
+@SuppressWarnings("all")
 public class ReadExample
 {
     public static void main(String[] args) throws IOException
