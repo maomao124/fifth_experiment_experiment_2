@@ -13,75 +13,76 @@
 13   * Description(描述)： 无
 14   */
 15  
-16  public class ReadExample
-17  {
-18      public static void main(String[] args) throws IOException
-19      {
-20          //------------------------------------------------------
-21          long startTime = System.nanoTime();   //获取开始时间
-22          //------------------------------------------------------
-23          File file = new File("src\\main\\java\\ReadExample.java");//添加当前文件路径
-24          File tempFile = new File("temp.txt");//目标文件
-25          FileReader inOne = new FileReader(file);//创建指向file的输入流
-26          BufferedReader inTwo = new BufferedReader(inOne);//创建指向inOne的输入流
-27          FileWriter toFile = new FileWriter(tempFile);//创建指向文件tempFile的输出流
-28          BufferedWriter out = new BufferedWriter(toFile);//创建指向toFile的输出流
-29          String s = null;
-30          int i = 0;
-31          s = inTwo.readLine();          //从源文件中读一行
-32          while (s != null)
-33          {
-34              i++;
-35              out.write(i + "  " + s);
-36              out.write("\n");    //换行
-37              s = inTwo.readLine();  //从源文件中读一行
-38          }
-39          inOne.close();
-40          inTwo.close();
-41          out.flush();
-42          out.close();
-43          toFile.close();
-44          System.out.println("完成");
-45          System.out.println("结果：");
-46          System.out.println("源文件长度：" + file.length());
-47          System.out.println("源文件行数："+i);
-48          System.out.println("源文件路径：" + file.getAbsolutePath());
-49          //------------------------------------------------------
-50          long endTime = System.nanoTime(); //获取结束时间
-51          if ((endTime - startTime) < 1000000)
-52          {
-53              double final_runtime;
-54              final_runtime = (endTime - startTime);
-55              final_runtime = final_runtime / 1000;
-56              System.out.println("算法运行时间： " + final_runtime + "微秒");
-57          }
-58          else if ((endTime - startTime) >= 1000000 && (endTime - startTime) < 10000000000L)
-59          {
-60              double final_runtime;
-61              final_runtime = (endTime - startTime) / 1000;
-62              final_runtime = final_runtime / 1000;
-63              System.out.println("算法运行时间： " + final_runtime + "毫秒");
-64          }
-65          else
-66          {
-67              double final_runtime;
-68              final_runtime = (endTime - startTime) / 10000;
-69              final_runtime = final_runtime / 100000;
-70              System.out.println("算法运行时间： " + final_runtime + "秒");
-71          }
-72          Runtime r = Runtime.getRuntime();
-73          float memory;
-74          memory = r.totalMemory();
-75          memory = memory / 1024 / 1024;
-76          System.out.printf("JVM总内存：%.3fMB\n", memory);
-77          memory = r.freeMemory();
-78          memory = memory / 1024 / 1024;
-79          System.out.printf(" 空闲内存：%.3fMB\n", memory);
-80          memory = r.totalMemory() - r.freeMemory();
-81          memory = memory / 1024 / 1024;
-82          System.out.printf("已使用的内存：%.4fMB\n", memory);
-83          //------------------------------------------------------
-84      }
-85  }
-86  
+16  @SuppressWarnings("all")
+17  public class ReadExample
+18  {
+19      public static void main(String[] args) throws IOException
+20      {
+21          //------------------------------------------------------
+22          long startTime = System.nanoTime();   //获取开始时间
+23          //------------------------------------------------------
+24          File file = new File("src\\main\\java\\ReadExample.java");//添加当前文件路径
+25          File tempFile = new File("temp.txt");//目标文件
+26          FileReader inOne = new FileReader(file);//创建指向file的输入流
+27          BufferedReader inTwo = new BufferedReader(inOne);//创建指向inOne的输入流
+28          FileWriter toFile = new FileWriter(tempFile);//创建指向文件tempFile的输出流
+29          BufferedWriter out = new BufferedWriter(toFile);//创建指向toFile的输出流
+30          String s = null;
+31          int i = 0;
+32          s = inTwo.readLine();          //从源文件中读一行
+33          while (s != null)
+34          {
+35              i++;
+36              out.write(i + "  " + s);
+37              out.write("\n");    //换行
+38              s = inTwo.readLine();  //从源文件中读一行
+39          }
+40          inOne.close();
+41          inTwo.close();
+42          out.flush();
+43          out.close();
+44          toFile.close();
+45          System.out.println("完成");
+46          System.out.println("结果：");
+47          System.out.println("源文件长度：" + file.length());
+48          System.out.println("源文件行数："+i);
+49          System.out.println("源文件路径：" + file.getAbsolutePath());
+50          //------------------------------------------------------
+51          long endTime = System.nanoTime(); //获取结束时间
+52          if ((endTime - startTime) < 1000000)
+53          {
+54              double final_runtime;
+55              final_runtime = (endTime - startTime);
+56              final_runtime = final_runtime / 1000;
+57              System.out.println("算法运行时间： " + final_runtime + "微秒");
+58          }
+59          else if ((endTime - startTime) >= 1000000 && (endTime - startTime) < 10000000000L)
+60          {
+61              double final_runtime;
+62              final_runtime = (endTime - startTime) / 1000;
+63              final_runtime = final_runtime / 1000;
+64              System.out.println("算法运行时间： " + final_runtime + "毫秒");
+65          }
+66          else
+67          {
+68              double final_runtime;
+69              final_runtime = (endTime - startTime) / 10000;
+70              final_runtime = final_runtime / 100000;
+71              System.out.println("算法运行时间： " + final_runtime + "秒");
+72          }
+73          Runtime r = Runtime.getRuntime();
+74          float memory;
+75          memory = r.totalMemory();
+76          memory = memory / 1024 / 1024;
+77          System.out.printf("JVM总内存：%.3fMB\n", memory);
+78          memory = r.freeMemory();
+79          memory = memory / 1024 / 1024;
+80          System.out.printf(" 空闲内存：%.3fMB\n", memory);
+81          memory = r.totalMemory() - r.freeMemory();
+82          memory = memory / 1024 / 1024;
+83          System.out.printf("已使用的内存：%.4fMB\n", memory);
+84          //------------------------------------------------------
+85      }
+86  }
 87  
+88  
