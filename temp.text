@@ -1,0 +1,44 @@
+1 import java.io.*;
+2 
+3 /**
+4  * Project name(项目名称)：第五次实验_实验2
+5  * Package(包名): PACKAGE_NAME
+6  * Class(类名): ReadExample
+7  * Author(作者）: mao
+8  * Author QQ：1296193245
+9  * GitHub：https://github.com/maomao124/
+10  * Date(创建日期)： 2021/11/21
+11  * Time(创建时间)： 20:59
+12  * Version(版本): 1.0
+13  * Description(描述)： 无
+14  */
+15 
+16 public class ReadExample
+17 {
+18     public static void main(String[] args) throws IOException
+19     {
+20         File file = new File("src\\main\\java\\ReadExample.java");//添加当前文件路径
+21         File tempFile = new File("temp.text");//目标文件
+22         FileReader inOne = new FileReader(file);//创建指向file的输入流
+23         BufferedReader inTwo = new BufferedReader(inOne);//创建指向inOne的输入流
+24         FileWriter toFile = new FileWriter(tempFile);//创建指向文件tempFile的输出流
+25         BufferedWriter out = new BufferedWriter(toFile);//创建指向toFile的输出流
+26         String s = null;
+27         int i = 0;
+28         s = inTwo.readLine();          //从源文件中读一行
+29         while (s != null)
+30         {
+31             i++;
+32             out.write(i + " " + s);
+33             out.write("\n");    //换行
+34             s = inTwo.readLine();  //从源文件中读一行
+35         }
+36         inOne.close();
+37         inTwo.close();
+38         out.flush();
+39         out.close();
+40         toFile.close();
+41         System.out.println("完成");
+42     }
+43 
+44 }
